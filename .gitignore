@@ -1,6 +1,5 @@
 *.idea
-app-gateway/public
-service-media/public
+**/public
 **/node_modules
 *.env
 */package-lock.json
