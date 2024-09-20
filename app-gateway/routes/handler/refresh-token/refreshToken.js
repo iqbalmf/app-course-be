@@ -16,6 +16,7 @@ module.exports = async (req, res) => {
     const refreshToken = req.body.refresh_token;
     const email = req.body.email;
 
+
     if (!refreshToken || !email) {
       return res.status(400).json({status: 'error', message: 'invalid token'})
     }

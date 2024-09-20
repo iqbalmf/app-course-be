@@ -38,6 +38,22 @@ router.get('/', async (req, res) => {
     data: mappedMedia
   })
 });
+router.get('/:id', async (req, res) => {
+  const id = req.params.id
+  const media = await Media.findOne({
+    where: { id: id }
+  })
+  if (!media){
+    return res.status(404).json({
+      status: 'error',
+      message: 'media not found'
+    });
+  }
+  return res.json({
+    status: 'success',
+    data: media
+  })
+})
 router.delete('/:id', async (req, res) => {
   const id = req.params.id;
   const media = await Media.findByPk(id);
