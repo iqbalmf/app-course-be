@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
   if (validate.length) {
     return res.status(400).json({
       status: 'error',
-      message: 'user not found'
+      message: validate
     });
   }
 
@@ -34,7 +34,7 @@ module.exports = async (req, res) => {
     user_id: userId
   });
 
-  return res.status(404).json({
+  return res.json({
     status: 'success',
     data: {
       id: createRefreshToken.id

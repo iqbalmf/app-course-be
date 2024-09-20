@@ -10,8 +10,11 @@ const coursesRouter = require('./routes/courses');
 const mediaRouter = require('./routes/media');
 const ordersRouter = require('./routes/orders');
 // const paymentsRouter = require('/routes/payments');
+const refreshTokenRouter = require('./routes/refreshTokens')
 
-var app = express();
+const app = express();
+
+const verifyToken = require('./middleware/verifyToken')
 
 app.use(logger('dev'));
 app.use(express.json({limit: '50mb'}));
@@ -21,9 +24,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/courses', coursesRouter);
+app.use('/courses', verifyToken, coursesRouter);
 app.use('/media', mediaRouter);
 app.use('/orders', ordersRouter);
 // app.use('/payments', paymentsRouter);
+app.use('/refresh-tokens', refreshTokenRouter)
 
 module.exports = app;
