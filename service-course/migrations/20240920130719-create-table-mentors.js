@@ -1,12 +1,13 @@
 'use strict';
 
+const {DataTypes} = require("sequelize");
 /** @type {import('sequelize-cli').Migration} */
 module.exports =  {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('mentors', {
       id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
+        type: Sequelize.UUID,
+        defaultValue: DataTypes.UUIDV4,
         allowNull: false,
         primaryKey: true
       },

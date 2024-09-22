@@ -1,7 +1,9 @@
 const {Mentor} = require('../../../models');
 const Validator = require('fastest-validator');
+const logger = require('../../../logger/logger');
 const v = new Validator();
 module.exports = async (req, res) => {
+  logger.info(req.body)
   const schema = {
     name: {type: 'string', nullable: false},
     email: {type: 'email', nullable: false},

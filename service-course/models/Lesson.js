@@ -1,9 +1,10 @@
-module.exports = (sequelize, DataTypes) => {
+const {DataTypes} = require("sequelize");
+module.exports = (sequelize) => {
   return sequelize.define('Lesson', {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-      autoIncrement: true,
       allowNull: false
     },
     name: {

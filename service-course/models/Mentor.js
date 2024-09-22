@@ -1,9 +1,10 @@
-module.exports = (sequelize, DataTypes) => {
+const {DataTypes} = require('sequelize');
+module.exports = (sequelize) => {
   return sequelize.define('Mentor', {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-      autoIncrement: true,
       allowNull: false
     },
     name: {
@@ -22,11 +23,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    createdAt:{
+    createdAt: {
       field: 'created_at',
       type: DataTypes.DATE,
     },
-    updatedAt:{
+    updatedAt: {
       field: 'updated_at',
       type: DataTypes.DATE,
     }

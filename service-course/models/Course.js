@@ -1,9 +1,10 @@
-module.exports = (sequelize, DataTypes) => {
+const {DataTypes} = require("sequelize");
+module.exports = (sequelize) => {
   return sequelize.define('Course', {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-      autoIncrement: true,
       allowNull: false
     },
     name: {
@@ -43,21 +44,21 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true
     },
-    mentor_id: {
-      type: DataTypes.INTEGER,
+    mentorID: {
+      field: 'mentor_id',
+      type: DataTypes.STRING,
       allowNull: false
     },
     createdAt: {
       field: 'created_at',
       type: DataTypes.DATE,
-      allowNull: false,
     },
-    updated: {
+    updatedAt: {
       field: 'updated_at',
       type: DataTypes.DATE,
-      allowNull: false,
     }
   }, {
     tableName: 'courses',
+    timestamps: true
   });
 }
