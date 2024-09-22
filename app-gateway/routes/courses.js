@@ -1,10 +1,20 @@
-var express = require('express');
-var router = express.Router();
-var { APP_NAME } = process.env;
+const express = require('express');
+const router = express.Router();
+const verifyToken = require('../middleware/verifyToken')
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('courses: ' + APP_NAME);
-});
+const mentorHandler = require('./handler/mentor')
+const courseHandler = require('./handler/course')
+
+router.post('/mentor', verifyToken, mentorHandler.create)
+router.get('/mentor', verifyToken, mentorHandler.getAll)
+router.get('/mentor/:id', verifyToken, mentorHandler.getById)
+router.put('/mentor/:id', mentorHandler.update)
+router.delete('/mentor/:id', mentorHandler.destroy)
+//
+// router.post('/', courseHandler.create)
+// router.get('/', courseHandler.getAll)
+// router.get('/:id', courseHandler.getById)
+// router.put('/:id', courseHandler.update)
+// router.delete('/:id', courseHandler.destroy)
 
 module.exports = router;
