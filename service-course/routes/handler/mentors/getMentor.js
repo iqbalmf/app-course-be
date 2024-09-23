@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
     attributes: ['id', 'name', 'email', 'profession', 'profile']
   }
   const mentor = await Mentor.findByPk(id, sqlOption);
-  logger.error('get mentor:', mentor)
+  logger.info(`get mentor: ${JSON.stringify(mentor)}`);
   if (!mentor){
     return res.status(404).json({
       status: 'error',
