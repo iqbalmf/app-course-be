@@ -3,37 +3,45 @@ const logger = require('../../../logger/logger');
 
 module.exports = async (req, res) => {
   try {
-    const myCourses = await MyCourse.findAll(
+    const myCourse = await MyCourse.findAll(
       {
         order: [['createdAt', 'DESC']],
         attributes: ['id', 'userId', 'courseId'],
+        include: [
+          {
+            model: Course,
+            as: 'course',
+            attributes: [
+              'id', 'name', 'certificate', 'thumbnail',
+              'type', 'status', 'price', 'level', 'description',
+              'mentorId'
+            ]
+          }
+        ],
       },
     );
-    const courseIds = myCourses.map(myCourse => myCourse.courseId);
-    const courses = await Course.findAll({
-      where: { id: courseIds },
-      attributes: [
-        'id', 'name', 'certificate', 'thumbnail', 'type',
-        'status', 'price', 'level', 'description',
-        'mentor_id', 'created_at', 'updated_at'
-      ]
-    });
-
-    const courseMap = {};
-    courses.forEach(course => {
-      courseMap[course.id] = course;
-    });
-
-    const responseData = myCourses.map(myCourse => ({
-      id: myCourse.id,
-      courseId: myCourse.courseId,
-      userId: myCourse.userId,
-      course: courseMap[myCourse.courseId] || []
-    }));
 
     return res.json({
       status: 'success',
-      data: responseData
+      data: myCourse.map(mc => ({
+        id: mc.id,
+        course_id: mc.courseId,
+        user_id: mc.userId,
+        course: mc.course ? {
+          id: mc.course.id,
+          name: mc.course.name,
+          certificate: mc.course.certificate,
+          thumbnail: mc.course.thumbnail,
+          type: mc.course.type,
+          status: mc.course.status,
+          price: mc.course.price,
+          level: mc.course.level,
+          description: mc.course.description,
+          mentorId: mc.course.mentorId,
+          created_at: mc.course.created_at,
+          updated_at: mc.course.updated_at
+        } : null
+      }))
     })
   } catch (error) {
     logger.error(error);

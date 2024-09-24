@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
     }
 
     const attributes = {
-      attributes: ['id', 'name', 'certificate', 'type', 'thumbnail', 'status', 'price', 'level', 'description', 'mentorID']
+      attributes: ['id', 'name', 'certificate', 'type', 'thumbnail', 'status', 'price', 'level', 'description', 'mentorId']
     }
     const {
       rows: courses,

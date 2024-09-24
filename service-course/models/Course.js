@@ -1,6 +1,6 @@
 const {DataTypes} = require("sequelize");
 module.exports = (sequelize) => {
-  return sequelize.define('Course', {
+  const Course = sequelize.define('Course', {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -44,7 +44,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true
     },
-    mentorID: {
+    mentorId: {
       field: 'mentor_id',
       type: DataTypes.STRING,
       allowNull: false
@@ -61,4 +61,12 @@ module.exports = (sequelize) => {
     tableName: 'courses',
     timestamps: true
   });
+  Course.associate = function(models) {
+    Course.hasMany(models.MyCourse, {
+      foreignKey: 'courseId',
+      as: 'myCourses'
+    });
+  };
+
+  return Course;
 }

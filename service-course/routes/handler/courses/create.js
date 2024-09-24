@@ -38,7 +38,7 @@ module.exports = async (req, res) => {
 
   const course = {
     name: req.body.name, certificate: req.body.certificate, type: req.body.type,
-    status: req.body.status, level: req.body.level, mentorID: req.body.mentorId,
+    status: req.body.status, level: req.body.level, mentorId: req.body.mentorId,
     description: req.body.description, price: req.body.price, thumbnail: req.body.thumbnail
   }
   const createCourse = await Course.create(course);
@@ -51,7 +51,7 @@ module.exports = async (req, res) => {
         type: createCourse.type,
         status: createCourse.status,
         level: createCourse.level,
-        mentorID: createCourse.mentorId,
+        mentorId: createCourse.mentorId,
         description: createCourse.description,
         price: createCourse.price,
         thumbnail: createCourse.thumbnail,

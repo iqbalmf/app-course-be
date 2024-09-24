@@ -43,7 +43,7 @@ module.exports = async (req, res) => {
   logger.info("update data course")
   let updateCourse = {
     name: req.body.name, certificate: req.body.certificate, type: req.body.type,
-      status: req.body.status, level: req.body.level, mentorID: req.body.mentorId,
+      status: req.body.status, level: req.body.level, mentorId: req.body.mentorId,
       description: req.body.description, price: req.body.price, thumbnail: req.body.thumbnail
   }
   updateCourse = await course.update(updateCourse)
@@ -56,7 +56,7 @@ module.exports = async (req, res) => {
       type: updateCourse.type,
       status: updateCourse.status,
       level: updateCourse.level,
-      mentorID: updateCourse.mentorId,
+      mentorId: updateCourse.mentorId,
       description: updateCourse.description,
       price: updateCourse.price,
       thumbnail: updateCourse.thumbnail,
