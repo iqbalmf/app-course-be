@@ -9,12 +9,12 @@ module.exports = (sequelize) => {
     },
     userId: {
       fields: 'user_id',
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false
     },
     courseId: {
       fields: 'course_id',
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false
     },
     rating: {
@@ -26,6 +26,16 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: true
     },
+    createdAt: {
+      field: 'created_at',
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    updatedAt: {
+      field: 'updated_at',
+      type: DataTypes.DATE,
+      allowNull: false
+    }
   }, {
     tableName: 'reviews',
     timestamps: true

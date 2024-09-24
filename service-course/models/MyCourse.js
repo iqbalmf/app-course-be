@@ -7,16 +7,26 @@ module.exports = (sequelize) => {
       primaryKey: true,
       allowNull: false
     },
-    CourseId: {
+    courseId: {
       field: 'course_id',
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    UserId: {
+    userId: {
       field: 'user_id',
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
+    createdAt: {
+      field: 'created_at',
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    updatedAt: {
+      field: 'updated_at',
+      type: DataTypes.DATE,
+      allowNull: false
+    }
   }, {
     tableName: 'my_courses',
     timestamps: true,

@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
     },
     chapterId: {
       field: 'chapter_id',
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     createdAt: {

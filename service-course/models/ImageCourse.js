@@ -9,11 +9,21 @@ module.exports = (sequelize) => {
     },
     courseId: {
       field: 'course_id',
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     image: {
       type: DataTypes.STRING,
+      allowNull: false
+    },
+    createdAt: {
+      field: 'created_at',
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    updatedAt: {
+      field: 'updated_at',
+      type: DataTypes.DATE,
       allowNull: false
     }
   }, {

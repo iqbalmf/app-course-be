@@ -8,8 +8,8 @@ const api = apiAdapter(URL_SERVICE_COURSE);
 module.exports = async (req, res) => {
   try {
     const id = req.params.id;
-    const media = await api.get(`/api/courses/${id}`);
-    return res.json(media.data);
+    const users = await api.put(`/api/chapter/${id}`, req.body);
+    return res.json(users.data);
   } catch (error) {
     if (error.code === 'ECONNREFUSED') {
       return res.status(500).json({status: 'error', message: 'service unavailable'});
