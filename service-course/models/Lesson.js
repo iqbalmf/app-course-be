@@ -1,6 +1,6 @@
 const {DataTypes} = require("sequelize");
 module.exports = (sequelize) => {
-  return sequelize.define('Lesson', {
+  const Lesson =  sequelize.define('Lesson', {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -34,4 +34,11 @@ module.exports = (sequelize) => {
     tableName: 'lessons',
     timestamps: true,
   });
+  Lesson.associate = function (models) {
+    Lesson.belongsTo(models.Chapter, {
+      foreignKey: 'chapterId',
+      as: 'chapter'
+    })
+  }
+  return Lesson;
 }

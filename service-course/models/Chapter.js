@@ -1,6 +1,6 @@
 const {DataTypes} = require("sequelize");
 module.exports = (sequelize) => {
-  return sequelize.define('Chapter', {
+  const Chapter = sequelize.define('Chapter', {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -30,4 +30,12 @@ module.exports = (sequelize) => {
     tableName: 'chapters',
     timestamps: true,
   });
+  Chapter.associate = function (models){
+    Chapter.hasMany(models.Lesson, {
+      foreignKey: 'chapterId',
+      as: 'lesson'
+    })
+  }
+
+  return Chapter
 }

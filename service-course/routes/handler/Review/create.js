@@ -2,7 +2,7 @@ const {Reviews, Course} = require('../../../models');
 const Validator = require('fastest-validator');
 const logger = require('../../../logger/logger');
 const v = new Validator();
-const fetchUserData = require('../../../utils/getUserById')
+const getUsers = require('../../../utils/getUsers')
 module.exports = async (req, res) => {
   const schema = {
     userId: {type: 'string', nullable: false},
@@ -30,7 +30,7 @@ module.exports = async (req, res) => {
   let userData;
 
   try {
-    userData = await fetchUserData(req.body.userId);
+    userData = await getUsers.fetchUserData(req.body.userId);
   } catch (error) {
     logger.error(`create_review: get user by id: ${JSON.stringify(req.body.userId)}`)
     return res.status(error.status).json(error.data || {status: 'error', message: error.message});
