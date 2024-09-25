@@ -55,7 +55,7 @@ module.exports = async (req, res) => {
     }
   });
   if (isExistMyCourse){
-    logger.error("user not found: ", req.body.userId)
+    logger.error("user already taken this course: ", req.body.userId)
     return res.status(404).json({
       status: 'error',
       message: `user already taken this course`

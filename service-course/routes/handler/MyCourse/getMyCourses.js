@@ -3,8 +3,14 @@ const logger = require('../../../logger/logger');
 
 module.exports = async (req, res) => {
   try {
+    const userIds = req.query.user_id  || [];
+    const whereClause = {}
+    if (userIds){
+      whereClause.userId = userIds
+    }
     const myCourse = await MyCourse.findAll(
       {
+        where: userIds.length ? whereClause : null,
         order: [['createdAt', 'DESC']],
         attributes: ['id', 'userId', 'courseId'],
         include: [

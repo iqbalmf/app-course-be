@@ -1,4 +1,5 @@
 require('dotenv').config();
+const logger = require('../logger/logger')
 
 const {
   DB_USERNAME,
@@ -12,20 +13,29 @@ module.exports = {
     "password": DB_PASSWORD,
     "database": DB_DATABASE,
     "host": DB_HOST,
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "logging": (info) => {
+      logger.info(info);
+    }
   },
   "test": {
     "username": DB_USERNAME,
     "password": DB_PASSWORD,
     "database": DB_DATABASE,
     "host": DB_HOST,
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "logging": (info) => {
+      logger.info(info);
+    }
   },
   "production": {
     "username": DB_USERNAME,
     "password": DB_PASSWORD,
     "database": DB_DATABASE,
     "host": DB_HOST,
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "logging": (info) => {
+      logger.info(info);
+    }
   }
 }

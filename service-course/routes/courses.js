@@ -6,6 +6,7 @@ const chapterHandler = require('./handler/Chapter');
 const lessonHandler = require('./handler/Lesson');
 const imageCourseHandler = require('./handler/ImageCourse');
 const myCourseHandler = require('./handler/MyCourse');
+const reviewHandler = require('./handler/Review')
 
 router.post('/mentors', mentorHandler.createMentor);
 router.put('/mentors/:id', mentorHandler.updateMentor)
@@ -35,6 +36,10 @@ router.post('/my-course', myCourseHandler.createMyCourse);
 router.get('/my-course/:id', myCourseHandler.getMyCourse);
 router.get('/my-course', myCourseHandler.getMyCourses);
 router.delete('/my-course/:id', myCourseHandler.deleteMyCourse);
+
+router.post('/review', reviewHandler.createReview);
+router.delete('/review/:id', reviewHandler.deleteReview);
+router.put('/review/:id', reviewHandler.updateReview);
 
 router.post('/lesson', lessonHandler.createLesson);
 router.get('/lesson/:id', lessonHandler.getLesson);

@@ -8,12 +8,12 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     userId: {
-      fields: 'user_id',
+      field: 'user_id',
       type: DataTypes.STRING,
       allowNull: false
     },
     courseId: {
-      fields: 'course_id',
+      field: 'course_id',
       type: DataTypes.STRING,
       allowNull: false
     },

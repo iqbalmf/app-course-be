@@ -2,7 +2,7 @@ const {MyCourse, Course} = require('../../../models');
 const logger = require('../../../logger/logger');
 module.exports = async (req, res) => {
   const id = req.params.id;
-  logger.info("find my course id :", id)
+  logger.info(`find my course id : ${id}`)
   const myCourse = await MyCourse.findByPk(id);
   if (!myCourse) {
     return res.status(404).json(
