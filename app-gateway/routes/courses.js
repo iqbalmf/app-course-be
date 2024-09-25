@@ -8,6 +8,7 @@ const chapterHandler = require('./handler/chapter')
 const lessonHandler = require('./handler/lesson')
 const imagesHandler = require('./handler/images')
 const myCourseHandler = require('./handler/my-course')
+const reviewHandler = require('./handler/review')
 
 router.post('/mentor', verifyToken, mentorHandler.create)
 router.get('/mentor', verifyToken, mentorHandler.getAll)
@@ -37,6 +38,10 @@ router.post('/my-course', verifyToken, myCourseHandler.create)
 router.get('/my-course', verifyToken, myCourseHandler.getAll)
 router.get('/my-course/:id', verifyToken, myCourseHandler.getById)
 router.delete('/my-course/:id', verifyToken, myCourseHandler.destroy)
+
+router.post('/review', verifyToken, reviewHandler.create)
+router.put('/review/:id', verifyToken, reviewHandler.update)
+router.delete('/review/:id', verifyToken, reviewHandler.destroy)
 
 router.post('/', verifyToken, courseHandler.create)
 router.get('/', verifyToken, courseHandler.getAll)

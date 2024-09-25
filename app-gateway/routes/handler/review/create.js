@@ -7,8 +7,7 @@ const api = apiAdapter(URL_SERVICE_COURSE);
 
 module.exports = async (req, res) => {
   try {
-    const userIds = req.query.user_id || [];
-    const media = await api.get('/api/my-course', {params: {user_id: userIds}});
+    const media = await api.post('/api/review', req.body);
     return res.json(media.data);
   } catch (error) {
     if (error.code === 'ECONNREFUSED') {
