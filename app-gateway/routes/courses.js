@@ -44,8 +44,8 @@ router.put('/review/:id', verifyToken, reviewHandler.update)
 router.delete('/review/:id', verifyToken, reviewHandler.destroy)
 
 router.post('/', verifyToken, courseHandler.create)
-router.get('/', verifyToken, courseHandler.getAll)
-router.get('/:id', verifyToken, courseHandler.getById)
+router.get('/', courseHandler.getAll)
+router.get('/:id', courseHandler.getById)
 router.put('/:id', verifyToken, courseHandler.update)
 router.delete('/:id', verifyToken, courseHandler.destroy)
 
